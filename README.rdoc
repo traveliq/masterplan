@@ -1,9 +1,25 @@
-= schemer
+= Schemer
 
-Description goes here.
+Schemer is a library for comparing Ruby data structures against predefined templates.
+
+== Installation
+
+Currently, you can only install from Github. Add this to your Gemfile:
+
+    gem 'schemer', :git => 'git://github.com/traveliq/schemer.git'
+
+If you don't use bundler, you're on your own, sorry.
+
+== Authors
+
+Martin Tepper (monogreen.de), Holger Pillmann
+
+== Contact
+
+For questions, contact the authors or developer@traveliq.net
 
 == Contributing to schemer
- 
+
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet
 * Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it
 * Fork the project
@@ -14,6 +30,6 @@ Description goes here.
 
 == Copyright
 
-Copyright (c) 2011 Martin Tepper. See LICENSE.txt for
+Copyright (c) 2011 www.travel-iq.com. See LICENSE.txt for
 further details.
 

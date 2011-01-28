@@ -13,11 +13,11 @@ require 'jeweler'
 Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
   gem.name = "schemer"
-  gem.homepage = "http://github.com/MGPalmer/schemer"
+  gem.homepage = "http://github.com/traveliq/schemer"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
-  gem.email = "mgpalmer@monogreen.de"
+  gem.summary = %Q{Schemer is a library for comparing Ruby data structures against predefined templates.}
+  gem.description = %Q{Please see the README}
+  gem.email = "developer@traveliq.net"
   gem.authors = ["Martin Tepper"]
   # Include your dependencies below. Runtime dependencies are required when using your gem,
   # and development dependencies are only needed for development (ie running rake tasks, tests, etc)
