@@ -9,9 +9,9 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Martin Tepper"]
-  s.date = %q{2011-01-28}
-  s.description = %q{TODO: longer description of your gem}
-  s.email = %q{mgpalmer@monogreen.de}
+  s.date = %q{2011-01-31}
+  s.description = %q{Please see the README}
+  s.email = %q{developer@traveliq.net}
   s.extra_rdoc_files = [
     "LICENSE.txt",
     "README.rdoc"
@@ -30,14 +30,15 @@ Gem::Specification.new do |s|
     "lib/schemer/document.rb",
     "lib/schemer/rule.rb",
     "lib/unit_test_extensions.rb",
+    "schemer.gemspec",
     "spec/schemer_spec.rb",
     "spec/spec_helper.rb"
   ]
-  s.homepage = %q{http://github.com/MGPalmer/schemer}
+  s.homepage = %q{http://github.com/traveliq/schemer}
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.7}
-  s.summary = %q{TODO: one-line summary of your gem}
+  s.summary = %q{Schemer is a library for comparing Ruby data structures against predefined templates.}
   s.test_files = [
     "spec/schemer_spec.rb",
     "spec/spec_helper.rb"
