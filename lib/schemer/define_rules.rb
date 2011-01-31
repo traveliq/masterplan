@@ -1,5 +1,7 @@
 module Schemer
 
+  # Include this module into whatever code generates Schemer::Documents - you get
+  # methods that make it easier to generate Schemer::Rule objects.
   module DefineRules
 
     # This turns the supplied +example_value+ (any object) into an object that carries rules about itself with it.

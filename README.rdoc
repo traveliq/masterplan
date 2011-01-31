@@ -2,6 +2,94 @@
 
 Schemer is a library for comparing Ruby data structures against predefined templates.
 
+At Travel IQ, this is used to define a canonical definition of the structure and format of the requests and responses of our APIs.
+In short, you get something that is similar to a XML Scheme - a template against which your data can be compared, to
+ensure its correctness programmatically. Only without the XML part.
+
+Examples make this easier to explain. Say you have a webservice or class that produces
+a Ruby data structure like this:
+
+    [
+      {
+        :name => "Tegel Airport",
+        :code => "TXL",
+        :latitude => 2.35454,
+        :longitude => 54.67867
+      },
+      {
+        :name => "Schönefeld Airport",
+        :code => "SXF",
+        :latitude => 5.35454,
+        :longitude => 34.67867
+      }
+    ]
+
+and so on and so forth. In your tests of this service, you want to make sure that this
+structure follows certain rules:
+
+* It's always an Array, and it can be empty, but not null
+* Each entry is a hash
+* Each hash has the keys :name, :code, :latitude, :longitude
+* No value of these keys is ever null
+* Name and code are strings
+* The strings aren't empty
+* The code is three characters long and consists of uppercase letters
+* Latitude and Longitude are floats
+
+In a more XML-centric world, you would define an XML (or Relax-NG etc.) Scheme that defines all
+these rules and then use that to validate your output. But we also want to deliver JSON...so we'll define
+the rules as a Schemer::Document, and validate the data while it's still Ruby, and say that as long
+as the source data is correct, the representation in JSON or XML will also be correct:
+
+    include Schemer::DefineRules
+
+    doc = Schemer::Document.new(
+      [
+        {
+          :name => "Tegel Airport",
+          :code => rule("TXL", :matches => /[A-Z]{3}/),
+          :latitude => 2.35454,
+          :longitude => 54.67867
+        },
+        {
+          :name => "Schönefeld Airport",
+          :code => "SXF",
+          :latitude => 5.35454,
+          :longitude => 34.67867
+        }
+      ]
+    )
+
+It doesn't look much different from the example, but there are a lot of rules built-in.
+You can now use the doc object to check your data against the template:
+
+    Schemer.compare(:scheme => doc, :to => [{:example => :data}])
+
+And it will throw a Schemer::FailedError exception, and print out debugging data.
+
+The implicit rules are:
+
+* Each object in the data needs to be of the same class as in the template
+* hash keys must match up
+* The first element of an Array in the template is used as the template for all elements in the data. That's why we didn't
+  have to restate the custom rule about the code in the above example, as only the "Tegel Airport" hash is used for all checks.
+
+You can add extra rules with the rule method - see Schemer::DefineRules#rule for details.
+
+There is also an added assertion for unit tests or specs:
+
+    assert_schemer(doc, [{:example => :data})
+
+A problem with webservices is that you need to keep the documentation up to date - something
+that is easily forgotten. If you have a schemer document, you can use it not only as the template,
+but also as an example in, say, online documentation:
+
+    <pre>
+      <%= JSON.dump(doc.to_hash) %>
+    </pre>
+
+The to_hash method removes the Schemer::Rule objects for clean output.
+
 == Installation
 
 Currently, you can only install from Github. Add this to your Gemfile:
