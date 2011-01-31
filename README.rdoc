@@ -152,7 +152,7 @@ If you don't use bundler, you're on your own, sorry.
 
 == Authors
 
-Martin Tepper (monogreen.de), Holger Pillmann
+Martin Tepper (monogreen.de), Holger Pillmann (holger.pillmann@gmail.com), Dr. Florian Odronitz (odo@mac.com)
 
 == Contact
 
