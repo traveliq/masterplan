@@ -9,25 +9,28 @@ ensure its correctness programmatically. Only without the XML part.
 Examples make this easier to explain. Say you have a webservice or class that produces
 a Ruby data structure like this:
 
-    [
-      {
-        :name => "Tegel Airport",
-        :code => "TXL",
-        :latitude => 2.35454,
-        :longitude => 54.67867
-      },
-      {
-        :name => "Schönefeld Airport",
-        :code => "SXF",
-        :latitude => 5.35454,
-        :longitude => 34.67867
-      }
-    ]
+    {
+      :airports => [
+        {
+          :name => "Tegel Airport",
+          :code => "TXL",
+          :latitude => 2.35454,
+          :longitude => 54.67867
+        },
+        {
+          :name => "Schönefeld Airport",
+          :code => "SXF",
+          :latitude => 5.35454,
+          :longitude => 34.67867
+        }
+      ]
+    }
 
 and so on and so forth. In your tests of this service, you want to make sure that this
 structure follows certain rules:
 
-* It's always an Array, and it can be empty, but not null
+* It's a Hash with one key, :airports
+* The value is an Array, and it can be empty, but not null
 * Each entry is a hash
 * Each hash has the keys :name, :code, :latitude, :longitude
 * No value of these keys is ever null
@@ -44,7 +47,7 @@ as the source data is correct, the representation in JSON or XML will also be co
     include Schemer::DefineRules
 
     doc = Schemer::Document.new(
-      [
+      :airports => [
         {
           :name => "Tegel Airport",
           :code => rule("TXL", :matches => /[A-Z]{3}/),
@@ -65,7 +68,56 @@ You can now use the doc object to check your data against the template:
 
     Schemer.compare(:scheme => doc, :to => [{:example => :data}])
 
-And it will throw a Schemer::FailedError exception, and print out debugging data.
+And it will throw a Schemer::FailedError exception, and print out debugging data:
+
+    >> Schemer.compare(:scheme => doc, :to => {:example => :data})
+    Schemer::FailedError: keys don't match in 'root':
+    expected:	airports
+    received:	example
+
+    Expected:
+    {"airports"=>
+      [{:latitude=>2.35454,
+        :longitude=>54.67867,
+        :code=>
+         #<Schemer::Rule:0x6d0bd70
+          @example_value="TXL",
+          @options=
+           {"compare_each"=>false,
+            "allow_nil"=>false,
+            "included_in"=>false,
+            "matches"=>/[A-Z]{3}/}>,
+        :name=>"Tegel Airport"},
+       {:latitude=>5.35454,
+        :longitude=>34.67867,
+        :code=>"SXF",
+        :name=>"Schönefeld Airport"}]}
+
+
+    but was:
+    {"example"=>:data}
+
+Another example:
+
+    >> Schemer.compare(:scheme => doc, :to => {:airports => [{:name => "Bla", :latitude => 1.1, :longitude => 2.3, :code => "XXx"}]})
+    Schemer::FailedError: value at 'root'=>'airports'=>'0'=>'code' "XXx" (String) does not match /[A-Z]{3}/ !
+
+    Expected:
+    {"name"=>"Tegel Airport",
+     "latitude"=>2.35454,
+     "code"=>
+      #<Schemer::Rule:0x6d0bd70
+       @example_value="TXL",
+       @options=
+        {"compare_each"=>false,
+         "allow_nil"=>false,
+         "included_in"=>false,
+         "matches"=>/[A-Z]{3}/}>,
+     "longitude"=>54.67867}
+
+
+    but was:
+    {"name"=>"Bla", "latitude"=>1.1, "code"=>"XXx", "longitude"=>2.3}
 
 The implicit rules are:
 

@@ -2,6 +2,7 @@ module Schemer
   class Document < Hash
 
     def initialize(hash = {})
+      raise ArgumentError, "Can only work with a Hash, not a #{hash.class.name} !" unless hash.is_a?(Hash)
       hash.each do |k, v|
         self[k] = v
       end

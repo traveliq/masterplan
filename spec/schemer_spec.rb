@@ -59,7 +59,8 @@ describe "Schemer" do
     it "checks all array values one-to-one if the compare_each rule is used"
   end
 
-  describe "Converting into plain example hashes"
+  it "convertsinto plain example hashes"
+  it "doesn't create a Document out of anything other than a Hash"
   it "checks that the examples of rules obey the rules"
   it "has a unit test extension method"
 end
