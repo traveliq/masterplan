@@ -1,8 +1,8 @@
 module Test
   module Unit
     module Assertions
-      def assert_schemer(scheme, compare_to)
-        Schemer.compare(:scheme => scheme, :to => compare_to)
+      def assert_masterplan(scheme, compare_to)
+        Masterplan.compare(:scheme => scheme, :to => compare_to)
       end
     end
   end

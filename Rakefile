@@ -12,10 +12,10 @@ require 'rake'
 require 'jeweler'
 Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
-  gem.name = "schemer"
-  gem.homepage = "http://github.com/traveliq/schemer"
+  gem.name = "masterplan"
+  gem.homepage = "http://github.com/traveliq/masterplan"
   gem.license = "MIT"
-  gem.summary = %Q{Schemer is a library for comparing Ruby data structures against predefined templates.}
+  gem.summary = %Q{Masterplan is a library for comparing Ruby data structures against predefined templates.}
   gem.description = %Q{Please see the README}
   gem.email = "developer@traveliq.net"
   gem.authors = ["Martin Tepper"]
@@ -44,7 +44,7 @@ Rake::RDocTask.new do |rdoc|
   version = File.exist?('VERSION') ? File.read('VERSION') : ""
 
   rdoc.rdoc_dir = 'rdoc'
-  rdoc.title = "schemer #{version}"
+  rdoc.title = "masterplan #{version}"
   rdoc.rdoc_files.include('README*')
   rdoc.rdoc_files.include('lib/**/*.rb')
 end
