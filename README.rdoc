@@ -150,11 +150,11 @@ Note that for the moment, schemes, i.e. the outermost object, can only be hashes
 
 == Installation
 
-Currently, you can only install from Github. Add this to your Gemfile:
+    (sudo) gem install masterplan
+
+Or, install latest version from Github with bundler by adding this to your Gemfile:
 
     gem 'masterplan', :git => 'git://github.com/traveliq/masterplan.git'
-
-If you don't use bundler, you're on your own, sorry.
 
 == Authors
 

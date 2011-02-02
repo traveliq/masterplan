@@ -5,12 +5,12 @@
 
 Gem::Specification.new do |s|
   s.name = %q{masterplan}
-  s.version = "0.3.0"
+  s.version = "0.3.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Martin Tepper"]
   s.date = %q{2011-02-02}
-  s.description = %q{Please see the README}
+  s.description = %q{Masterplan is a library for comparing Ruby data structures against predefined templates - like XML Schema without the XML. Please see the README on github for more information.}
   s.email = %q{developer@traveliq.net}
   s.extra_rdoc_files = [
     "LICENSE.txt",
@@ -38,7 +38,7 @@ Gem::Specification.new do |s|
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.7}
-  s.summary = %q{Masterplan is a library for comparing Ruby data structures against predefined templates.}
+  s.summary = %q{Masterplan is a library for comparing Ruby data structures against predefined templates - like XML Schema without the XML.}
   s.test_files = [
     "spec/masterplan_spec.rb",
     "spec/spec_helper.rb"
