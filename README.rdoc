@@ -132,6 +132,8 @@ There is also an added assertion for unit tests or specs:
 
     assert_masterplan(doc, [{:example => :data})
 
+== Use schemes as examples in documentation
+
 A problem with webservices is that you need to keep the documentation up to date - something
 that is easily forgotten. If you have a masterplan document, you can use it not only as the template,
 but also as an example in, say, online documentation:
@@ -141,6 +143,10 @@ but also as an example in, say, online documentation:
     </pre>
 
 The to_hash method removes the Masterplan::Rule objects for clean output.
+
+== Caveat
+
+Note that for the moment, schemes, i.e. the outermost object, can only be hashes.
 
 == Installation
 

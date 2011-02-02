@@ -15,8 +15,9 @@ Jeweler::Tasks.new do |gem|
   gem.name = "masterplan"
   gem.homepage = "http://github.com/traveliq/masterplan"
   gem.license = "MIT"
-  gem.summary = %Q{Masterplan is a library for comparing Ruby data structures against predefined templates.}
-  gem.description = %Q{Please see the README}
+  summary = %Q{Masterplan is a library for comparing Ruby data structures against predefined templates - like XML Schema without the XML.}
+  gem.summary = summary
+  gem.description = summary + " Please see the README on github for more information."
   gem.email = "developer@traveliq.net"
   gem.authors = ["Martin Tepper"]
   # Include your dependencies below. Runtime dependencies are required when using your gem,
