@@ -3,6 +3,9 @@ require 'active_support/version'
 if ActiveSupport::VERSION::STRING >= "3.0.0"
   require 'active_support/core_ext'
 end
+if RUBY_VERSION > '1.9'
+  gem 'test-unit'
+end
 require 'test/unit/assertions'
 require 'masterplan'
 require 'masterplan/rule'

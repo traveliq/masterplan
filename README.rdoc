@@ -156,6 +156,11 @@ Or, install latest version from Github with bundler by adding this to your Gemfi
 
     gem 'masterplan', :git => 'git://github.com/traveliq/masterplan.git'
 
+== Dependencies
+
+You'll need ActiveSupport, but that should be handled automatically.
+Under Ruby 1.9.x, however, you need the test-unit gem. It works for us with test-unit 1.2.3.
+
 == Authors
 
 Martin Tepper (monogreen.de), Holger Pillmann (holger.pillmann@gmail.com), Dr. Florian Odronitz (odo@mac.com)
